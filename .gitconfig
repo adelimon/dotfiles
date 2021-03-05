@@ -1,0 +1,81 @@
+[alias]
+	co = checkout
+	ec = config --global -e
+	rbmaster = rebase origin/master
+	squash = rebase -i HEAD~2
+	squash3 = rebase -i HEAD~3
+	sq = rebase -i HEAD~2
+	sq3 = rebase -i HEAD~3
+	fwl = push --force-with-lease
+	cm = commit -am
+	wcm = commit -am \"WORK IN PROGRESS COMMIT\"
+	dir = config -l
+	listconfig = config -l
+	prune = gc --prune=now
+	currentbranch = rev-parse --abbrev-ref HEAD
+	rmnonsrc = clean -xdf
+	undo = checkout
+	masterreset = copull master
+	nb = "!f() { \
+			git conewbranch EIH-$1 ; \
+		}; f"	
+	conewbranch = "!f() { \
+			git checkout master ; \
+			git pull ; \
+			git checkout -b $1 ; \
+			git setorigin ; \
+			git diff package.json ; \
+		}; f"
+	setorigin = "!f() { \
+			currentBranch=`git currentbranch` ; \
+			git push --set-upstream origin $currentBranch ; \
+		}; f"
+	copull = "!f() {\
+			git fetch ; \
+			git checkout $1 ; \
+			git pull; \
+		}; f"
+	squashpush = "!f() {\
+			git commit -m \"WORK IN PROGRESS COMMIT PLEASE REMOVE THIS\" ; \
+			git squash ; \
+			git fwl; \
+		}; f"
+	rekt = "!f() {\
+			echo \"Gittin rekt\" ; \
+			echo \"rm -rf *\" ; \
+			echo \"Got rekt.\" ; \
+			echo \"jk not rly\" ; \
+		}; f"
+	cleanbadref = "!f() { rm -rv .git/refs/remotes/origin/$1; }; f"
+	undofile = "!f() {\
+			git checkout master $1; \
+		}; f"
+	ls = "!f() {\
+			git config -l | grep -vF branch. | sort; \
+		}; f"
+	deletebranch = "!f() {\
+				git branch -D $1; \
+				git push origin --delete $1; \
+		}; f"
+	updatedate = "!f() {\
+			git commit --amend --date="now"; \
+		}; f"
+[user]
+	name = Alan Delimon
+	email = alan.delimon@ellucian.com
+[diff]
+    tool = code
+[difftool "code"]
+    cmd = "code $LOCAL $REMOTE"
+[difftool]
+    prompt = true
+[merge]
+    tool = code
+	tool = kdiff3
+	tool = kdiff3
+[mergetool "code"]
+    cmd = "code $LOCAL $REMOTE"
+[mergetool]
+    prompt = true
+[core]
+	trustctime = false

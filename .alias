@@ -1,0 +1,58 @@
+alias dir='ls -l'
+alias aliases="vi ~/.bash_profile" # usage: type `aliases` in Terminal
+alias rp='source ~/.bash_profile'
+alias vialias="vi ~/.alias ; rp" 
+# Navigate to location
+alias home="cd ~"
+alias desktop="cd ~/Desktop/"
+alias githome="regwork; cd ~/git/"
+alias github="regnpm; cd ~/github/"
+alias tms="githome; cd tms"
+alias tmsa="tms; cd tenant-management-api"
+alias eih="githome; cd EIH"
+alias is="githome; cd IS"
+alias infra="eih; cd infra"
+alias cdadmin="eih; cd admin"
+alias authz="githome; cd authz"
+alias tf="githome; cd ecpterraform"
+alias fed="githome; cd federation/federation-service"
+alias learning="cd ~/learning/"
+alias killnomercy="kill -9 $1"
+alias googleit='open -a "Google Chrome" http://www.google.com/search'
+alias grepr="grep -r $1 ./ | grep -v node_modules"
+# MacOS System
+alias showhiddenfiles="defaults write com.apple.finder AppleShowAllFiles YES" # requires Finder relaunch
+alias hidehiddenfiles="defaults write com.apple.finder AppleShowAllFiles NO" # requires Finder relaunch
+alias lsaws='set | grep AWS'
+alias ls='ls -al'
+alias free='top -l 1 -s 0 | grep PhysMem'
+alias bumpcam='sudo killall VDCAssistant && sudo killall AppleCameraAssistant'
+# sts short cuts
+alias sts='sts -user=adelimon'
+alias stsd='sts -account=10002'
+alias stst='sts -account=10004'
+alias stsp='sts -account=10005'
+alias stss='sts -account=10133'
+alias stslab='sts -account=10018'
+# AWS shortcuts
+alias latestAmi='aws ec2 describe-images --filters "Name=name, Values=Ellucian-SaaS-AMZN-ECS-GoldenImage*PROD*" --query 'Images[].{ID:ImageId,NM:Name,CD:CreationDate}' --output text --region $1 | sort -k1 | tail -n3'
+# nodejs helpers
+alias initnpm='npm install && npm test'
+alias runtest='./node_modules/.bin/mocha'
+alias npmrs='npm run-script $1'
+alias npmdu='npmrs docker-up'
+alias npmdd='npmrs docker-down'
+alias regnpm='npm config set registry https://registry.npmjs.org/'
+alias regwork='npm config set registry https://artifactory.devops.ellucian.com/artifactory/api/npm/npmjs/'
+alias bump="npm --no-git-tag-version version"
+alias bumppatch="bump patch"
+alias bumpminor="bump minor"
+alias npmwut="npm run"
+alias audith="npm audit | grep -B 1 -A 10 High"
+# git shortcuts
+alias comaster="git checkout master"
+alias updatecommit="git commit --amend --date=\"`date -R | sed 's/,//g'`\""
+alias dotnett="dotnet build; dotnet test; stty echo"
+alias dotnetb="dotnet build"
+# personal stuff
+alias clubmanager='ssh -i "~/Downloads/prakeyz.pem" ec2-user@3.214.228.215'

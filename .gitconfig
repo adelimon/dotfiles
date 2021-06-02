@@ -1,7 +1,7 @@
 [alias]
 	co = checkout
 	ec = config --global -e
-	rbmaster = rebase origin/master
+	rbmaster = rebase origin/main
 	squash = rebase -i HEAD~2
 	squash3 = rebase -i HEAD~3
 	sq = rebase -i HEAD~2
@@ -15,12 +15,12 @@
 	currentbranch = rev-parse --abbrev-ref HEAD
 	rmnonsrc = clean -xdf
 	undo = checkout
-	masterreset = copull master
+	masterreset = copull main
 	nb = "!f() { \
 			git conewbranch EIH-$1 ; \
 		}; f"	
 	conewbranch = "!f() { \
-			git checkout master ; \
+			git checkout main ; \
 			git pull ; \
 			git checkout -b $1 ; \
 			git setorigin ; \
@@ -48,7 +48,7 @@
 		}; f"
 	cleanbadref = "!f() { rm -rv .git/refs/remotes/origin/$1; }; f"
 	undofile = "!f() {\
-			git checkout master $1; \
+			git checkout main $1; \
 		}; f"
 	ls = "!f() {\
 			git config -l | grep -vF branch. | sort; \
@@ -62,7 +62,7 @@
 		}; f"
 [user]
 	name = Alan Delimon
-	email = alan.delimon@ellucian.com
+	email = adelimon@gmail.com
 [diff]
     tool = code
 [difftool "code"]
@@ -70,8 +70,6 @@
 [difftool]
     prompt = true
 [merge]
-    tool = code
-	tool = kdiff3
 	tool = kdiff3
 [mergetool "code"]
     cmd = "code $LOCAL $REMOTE"

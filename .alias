@@ -1,4 +1,5 @@
 alias dir='ls -l'
+alias rm='rm -v'
 alias aliases="vi ~/.bash_profile" # usage: type `aliases` in Terminal
 alias rp='source ~/.bash_profile'
 alias vialias="vi ~/.alias ; rp" 
@@ -6,7 +7,7 @@ alias vialias="vi ~/.alias ; rp"
 alias home="cd ~"
 alias desktop="cd ~/Desktop/"
 alias githome="regwork; cd ~/git/"
-alias github="regnpm; cd ~/github/"
+alias github="regnpm; export AWS_DEFAULT_REGION=us-east-1; export AWS_PROFILE=pra; cd ~/github/"
 alias tms="githome; cd tms"
 alias tmsa="tms; cd tenant-management-api"
 alias eih="githome; cd EIH"
@@ -27,13 +28,6 @@ alias lsaws='set | grep AWS'
 alias ls='ls -al'
 alias free='top -l 1 -s 0 | grep PhysMem'
 alias bumpcam='sudo killall VDCAssistant && sudo killall AppleCameraAssistant'
-# sts short cuts
-alias sts='sts -user=adelimon'
-alias stsd='sts -account=10002'
-alias stst='sts -account=10004'
-alias stsp='sts -account=10005'
-alias stss='sts -account=10133'
-alias stslab='sts -account=10018'
 # AWS shortcuts
 alias latestAmi='aws ec2 describe-images --filters "Name=name, Values=Ellucian-SaaS-AMZN-ECS-GoldenImage*PROD*" --query 'Images[].{ID:ImageId,NM:Name,CD:CreationDate}' --output text --region $1 | sort -k1 | tail -n3'
 # nodejs helpers
@@ -55,4 +49,7 @@ alias updatecommit="git commit --amend --date=\"`date -R | sed 's/,//g'`\""
 alias dotnett="dotnet build; dotnet test; stty echo"
 alias dotnetb="dotnet build"
 # personal stuff
-alias clubmanager='ssh -i "~/Downloads/prakeyz.pem" ec2-user@3.214.228.215'
+alias clubmanager='ssh -i "~/Downloads/prakeyz.pem" ec2-user@3.237.42.219'
+alias cmtest='ssh -i "~/Downloads/prakeyz.pem" ec2-user@34.207.193.162'
+alias laws='aws --endpoint-url=http://localhost:4566 $@'
+alias mp3towav='afconvert -f WAVE -d LEI24 $@'

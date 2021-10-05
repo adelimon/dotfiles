@@ -15,16 +15,15 @@
 	currentbranch = rev-parse --abbrev-ref HEAD
 	rmnonsrc = clean -xdf
 	undo = checkout
-	masterreset = copull main
+	masterreset = copull master
 	nb = "!f() { \
-			git conewbranch EIH-$1 ; \
+			git conewbranch $1 ; \
 		}; f"	
 	conewbranch = "!f() { \
 			git checkout main ; \
 			git pull ; \
 			git checkout -b $1 ; \
 			git setorigin ; \
-			git diff package.json ; \
 		}; f"
 	setorigin = "!f() { \
 			currentBranch=`git currentbranch` ; \
@@ -62,7 +61,7 @@
 		}; f"
 [user]
 	name = Alan Delimon
-	email = adelimon@gmail.com
+	email = alan.delimon@voicefoundry.com
 [diff]
     tool = code
 [difftool "code"]
@@ -70,6 +69,8 @@
 [difftool]
     prompt = true
 [merge]
+    tool = code
+	tool = kdiff3
 	tool = kdiff3
 [mergetool "code"]
     cmd = "code $LOCAL $REMOTE"
@@ -77,3 +78,5 @@
     prompt = true
 [core]
 	trustctime = false
+[credential]
+	helper = osxkeychain
